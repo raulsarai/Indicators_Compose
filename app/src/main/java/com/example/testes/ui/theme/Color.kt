@@ -1,4 +1,4 @@
-package com.example.linkedintestes.ui.theme
+package com.example.testes.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

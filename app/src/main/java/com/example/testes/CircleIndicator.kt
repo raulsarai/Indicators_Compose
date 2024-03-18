@@ -1,4 +1,4 @@
-package com.example.linkedintestes
+package com.example.testes
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -34,7 +34,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
-import com.example.linkedintestes.ui.theme.LinkedinTestesTheme
+import com.example.testes.ui.theme.LinkedinTestesTheme
 import kotlin.math.absoluteValue
 
 
@@ -52,8 +52,9 @@ class CircleIndicator : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column(modifier = Modifier
-                        .fillMaxSize()
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
                     ) {
                         PagerHorizontal(pagerStateHorizontal, numPages)
                         PagerVertical(pagerStateVertical, numPages)
@@ -68,9 +69,11 @@ class CircleIndicator : ComponentActivity() {
 @Composable
 fun PagerHorizontal(pagerState: PagerState, numPages: Int) {
 
-    Column(modifier = Modifier.padding(vertical = 15.dp),
+    Column(
+        modifier = Modifier.padding(vertical = 15.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         HorizontalPager(
             modifier = Modifier.padding(horizontal = 10.dp),
             pageSpacing = 10.dp,
@@ -98,15 +101,21 @@ fun PagerHorizontal(pagerState: PagerState, numPages: Int) {
 @Composable
 fun PagerVertical(pagerState: PagerState, numPages: Int) {
 
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
-        .padding(horizontal = 15.dp),
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 15.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.Top
     ) {
 
-        CircleIndicator(state = pagerState, numPages = numPages, dotColor = Color.Red, orientation = "vertical")
+        CircleIndicator(
+            state = pagerState,
+            numPages = numPages,
+            dotColor = Color.Red,
+            orientation = "vertical"
+        )
 
         Spacer(modifier = Modifier.padding(horizontal = 10.dp))
 
@@ -128,14 +137,6 @@ fun PagerVertical(pagerState: PagerState, numPages: Int) {
     }
 }
 
-
-@OptIn(ExperimentalFoundationApi::class)
-fun PagerState.offsetForPage(page: Int) = (currentPage - page) + currentPageOffsetFraction
-
-@OptIn(ExperimentalFoundationApi::class)
-fun PagerState.indicatorOffsetForPage(page: Int) =
-    1f - offsetForPage(page).coerceIn(-1f, 1f).absoluteValue
-
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CircleIndicator(
@@ -146,7 +147,7 @@ fun CircleIndicator(
     orientation: String = "horizontal"
 ) {
 
-    if (orientation == "horizontal"){
+    if (orientation == "horizontal") {
         Row(
             modifier = modifier
                 .fillMaxWidth()
@@ -176,7 +177,7 @@ fun CircleIndicator(
                 }
             }
         }
-    }else{
+    } else {
         Column(
             modifier = modifier
                 .wrapContentSize(),
